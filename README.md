@@ -1,6 +1,9 @@
 # RCHummer
 Raspberry Pi controlling a Newbright RC Hummer toy.
 
+![RC car bought in a charity shop](IMG_4532.jpg)
+![Tests with raspberry pi](IMG_4531.jpg)
+
 
 1. Enable Linux (or anything else) to share internet through ethernet.
   - https://askubuntu.com/questions/169473/sharing-connection-to-other-pcs-via-wired-ethernet
