@@ -14,6 +14,7 @@
 
 # To follow logs in real time:
 # sudo journalctl -f -u RCHummer
+# Maybe this is important to save the sdcard: https://www.k2dls.net/blog/2017/10/24/reducing-sd-card-writes-with-raspbian/
 
 [Unit]
 Description=RCHummer Server Service
