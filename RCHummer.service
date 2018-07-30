@@ -10,7 +10,7 @@
 # sudo systemctl stop RCHummer.service
 # and if chances were made to RCHummer.service
 # sudo systemctl daemon-reload
-# sudo systemctl restart RCHummer.service
+# sudo systemctl restart RCHummer.service  # restarts the service
 
 # To follow logs in real time:
 # sudo journalctl -f -u RCHummer
