@@ -19,8 +19,10 @@ import tornado.web
 import tornado.gen
 import datetime
 
+import math
+
 MIN_FREQUENCY_MOTOR_LOOP = 50 #in Hertz
-PWM_FREQUENCY = 400 #in Hertz
+PWM_FREQUENCY = 100 #in Hertz
 
 PINS_USED = [[22,27], [23,24]] #[[pins LR],[pins FB]]
 # More details https://www.raspberrypi.org/documentation/usage/gpio/README.md
@@ -42,16 +44,21 @@ motor_cmds = [[],[]]
 
 time_vec = [None,None]
 
+tc = 5.0
+
 def actuate_motor(motor_id):
     if motor_cmds[motor_id]:
         if time_vec[motor_id]:
             if time_vec[motor_id] < motor_cmds[motor_id]['timestamp']:
+                new_dutycycle = int(255*(1-math.exp(-abs(motor_cmds[motor_id]['cmd']/tc)))) # new asymptotic curve
                 if 100 >= motor_cmds[motor_id]['cmd'] > 0:
                     pi.set_PWM_dutycycle(PINS_USED[motor_id][0], 0)
-                    pi.set_PWM_dutycycle(PINS_USED[motor_id][1], int(255*abs(motor_cmds[motor_id]['cmd']/100.0)))
+                    # pi.set_PWM_dutycycle(PINS_USED[motor_id][1], int(255*abs(motor_cmds[motor_id]['cmd']/100.0)))
+                    pi.set_PWM_dutycycle(PINS_USED[motor_id][1], new_dutycycle if new_dutycycle<=253 else 255) # 253 to compensate
                 elif -100 <= motor_cmds[motor_id]['cmd'] < 0:
                     pi.set_PWM_dutycycle(PINS_USED[motor_id][1], 0)
-                    pi.set_PWM_dutycycle(PINS_USED[motor_id][0], int(255*abs(motor_cmds[motor_id]['cmd']/100.0)))
+                    # pi.set_PWM_dutycycle(PINS_USED[motor_id][0], int(255*abs(motor_cmds[motor_id]['cmd']/100.0)))                    
+                    pi.set_PWM_dutycycle(PINS_USED[motor_id][0], new_dutycycle if new_dutycycle<=253 else 255)
                 else:
                     # everything stops dutycycle=0
                     pi.set_PWM_dutycycle(PINS_USED[motor_id][0], 0)
