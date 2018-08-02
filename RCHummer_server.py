@@ -102,7 +102,6 @@ class ControllerWS(tornado.websocket.WebSocketHandler):
                 print("There's something wrong with pigpio, is the daemon running???", flush=True)
                 raise KeyboardInterrupt
             for pin in [i for j in PINS_USED for i in j]:
-                pi.set_pull_up_down(pin, pigpio.PUD_DOWN)
                 pi.set_mode(pin, pigpio.OUTPUT)
                 pi.set_PWM_frequency(pin, PWM_FREQUENCY) # http://abyz.me.uk/rpi/pigpio/python.html#set_PWM_frequency
                 pi.set_PWM_dutycycle(pin, 0) # starts off; goes from 0 to 255
