@@ -184,7 +184,10 @@ handlers = [(r'/ws', ControllerWS),
             (r'/(.*)', tornado.web.StaticFileHandler, {'path': os.getcwd()})
             ]
 
-application = tornado.web.Application(handlers)
+application = tornado.web.Application(handlers, websocket_ping_interval=5, websocket_ping_timeout=15})
+# Every [websocket_ping_interval] seconds, tornado will ping the client. If the client doesn't answer (pong)
+# after [websocket_ping_timeout] seconds, the websocket connection will be closed.
+# See http://www.tornadoweb.org/en/stable/web.html#application-configuration for more details.
 
 if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(application)
