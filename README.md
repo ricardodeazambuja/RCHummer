@@ -7,6 +7,8 @@ Raspberry Pi controlling a Newbright RC Hummer toy.
 New opening on the hood for battery swapping (later I will need to 3D print something to cover it...):  
 ![Now it's easier for battery swapping](IMG_4537.jpg)
 
+[![First test](https://img.youtube.com/vi/l4kLDmT9qso/0.jpg)](https://www.youtube.com/watch?v=l4kLDmT9qso)
+
 1. Enable Linux (or anything else) to share internet through ethernet.
   - https://askubuntu.com/questions/169473/sharing-connection-to-other-pcs-via-wired-ethernet
   - https://rhnvrm.github.io/2016-08-07-share-wifi-via-ethernet-gnome-3-20/
