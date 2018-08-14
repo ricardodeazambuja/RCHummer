@@ -4,7 +4,7 @@ Raspberry Pi controlling a Newbright RC Hummer toy.
 ![RC car bought in a charity shop](IMG_4532.jpg)
 ![Tests with raspberry pi](IMG_4531.jpg)
 
-Whole on the hood for battery swapping (later I will need to 3D print something to cover it...):  
+New opening on the hood for battery swapping (later I will need to 3D print something to cover it...):  
 ![Now it's easier for battery swapping](IMG_4537.jpg)
 
 1. Enable Linux (or anything else) to share internet through ethernet.
