@@ -35,5 +35,5 @@ Or
   - $ sudo pip install tornado 
 
 
-Example of asymptotic curve used to reach higher speeds faster:  
+Example of asymptotic curve used to reach higher speeds faster (remember, the motor response is not linear):  
 ![Now it's easier for battery swapping](Improving_response.png)
